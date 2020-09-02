@@ -2,7 +2,23 @@
 Command-line application using node.js, inquirer, and MySQL to make a CMS for keeping track of an organization's employees.
 
 
+There is a lot coming into this homework.
 
+Start with the schema. seed.sql file to generate filler "example" data.
+
+Create a `db` database folder.
+
+`prompts.js`: Inquirer questions.
+
+`connection.js`: The database connector.
+
+`index.js`: imports connection, creates a class constructor with different queries attached.
+
+`server.js` is the main brain. Import inquirer (external), logo (external), prompts.js (internal), db.js (internal).
+
+Use the ASCII title art package.
+
+Using a template literal for SQL queries preserves the spacing, to make them more readable.
 
 
 # Unit 12 MySQL Homework: Employee Tracker
@@ -17,7 +33,7 @@ Design the following database schema containing three tables:
 
 * **department**:
 
-  * **id** - INT PRIMARY KEY
+  * **id** - INT PRIMARY KEY (AI = auto-increment, PK = primary-key)
   * **name** - VARCHAR(30) to hold department name
 
 * **role**:
@@ -25,7 +41,7 @@ Design the following database schema containing three tables:
   * **id** - INT PRIMARY KEY
   * **title** -  VARCHAR(30) to hold role title
   * **salary** -  DECIMAL to hold role salary
-  * **department_id** -  INT to hold reference to department role belongs to
+  * **department_id** -  INT to hold reference to department role belongs to (FK = foreign key)
 
 * **employee**:
 
