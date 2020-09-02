@@ -1,0 +1,20 @@
+{
+  "name": "mysql-employee-tracker-10",
+  "version": "1.0.0",
+  "description": "Command-line application using node.js, inquirer, and MySQL to make a CMS for keeping track of an organization's employees.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GAFelton/mysql-employee-tracker-10.git"
+  },
+  "author": "GAFelton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GAFelton/mysql-employee-tracker-10/issues"
+  },
+  "homepage": "https://github.com/GAFelton/mysql-employee-tracker-10#readme"
+}
