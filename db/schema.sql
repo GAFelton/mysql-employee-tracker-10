@@ -13,8 +13,11 @@ CREATE TABLE roles(
   title VARCHAR(30) NOT NULL,
   salary DECIMAL,
   department_id INT,
-   FOREIGN KEY [department_id](department_id)
-    REFERENCES department(department_id),
+  CONSTRAINT fk_department
+  FOREIGN KEY (department_id)
+    REFERENCES departments(department_id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
   PRIMARY KEY (role_id)
 );
 
@@ -24,11 +27,15 @@ CREATE TABLE employees(
   last_name VARCHAR(30) NOT NULL,
   role_id INT,
   manager_id INT,
-  FOREIGN KEY [role_id](role_id)
-    REFERENCES roles(role_id),
-  FOREIGN KEY [manager_id](employee_id)
-    REFERENCES employee(employee_id),
+  CONSTRAINT fk_role
+  FOREIGN KEY (role_id)
+    REFERENCES roles(role_id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
+  CONSTRAINT fk_employee
+  FOREIGN KEY (manager_id)
+    REFERENCES employees(employee_id)
+    ON UPDATE CASCADE
+    ON DELETE CASCADE,
   PRIMARY KEY (employee_id)
 );
-
-
