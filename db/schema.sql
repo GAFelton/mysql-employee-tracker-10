@@ -2,13 +2,13 @@ CREATE DATABASE employee_DB;
 
 USE employee_DB;
 
-CREATE TABLE department(
+CREATE TABLE departments(
   department_id INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(30),
   PRIMARY KEY (department_id)
 );
 
-CREATE TABLE role(
+CREATE TABLE roles(
   role_id INT NOT NULL AUTO_INCREMENT,
   title VARCHAR(30) NOT NULL,
   salary DECIMAL,
@@ -25,7 +25,7 @@ CREATE TABLE employees(
   role_id INT,
   manager_id INT,
   FOREIGN KEY [role_id](role_id)
-    REFERENCES role(role_id),
+    REFERENCES roles(role_id),
   FOREIGN KEY [manager_id](employee_id)
     REFERENCES employee(employee_id),
   PRIMARY KEY (employee_id)
