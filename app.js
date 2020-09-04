@@ -14,3 +14,12 @@ async function viewallTitles() {
 
     mainPrompt();
 }
+
+
+async function mainPrompt() {
+    const { choice } = await inquirer.prompt(prompts.mainPrompt);
+
+    switch (choice) {
+
+    }
+}
