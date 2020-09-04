@@ -2,7 +2,7 @@
 
 const connection = require('./connection');
 
-//module.exports = new DB(connection)
+
 
 class DB {
     constructor(connection) {
@@ -13,17 +13,19 @@ class DB {
         return this.connection.query(
             `
         SELECT
-            title.id,
-            title.name AS Title,
-            title.salary AS Salary,
-            org.name AS Org
+            roles.role_id,
+            roles.title AS Role,
+            roles.salary AS Salary,
+            departments.name AS Department
         FROM
-            title
+            roles
         LEFT JOIN
-            org ON title.org_id = ord.id
+            departments ON roles.department_id = departments.department_id
         ORDER BY
-            title.id;
-            `
+            roles.role_id;
+            ` 
         );
     }
 }
+
+module.exports = new DB(connection)
