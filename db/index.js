@@ -45,6 +45,18 @@ class DB {
     viewAllEmployees() {
         return this.connection.query(
             `
+            SELECT
+                employees.id AS ID,
+                employees.first_name AS First_Name,
+                employees.last_name AS Last_Name,
+                roles.title AS Role,
+                employees.manager_id AS Manager_ID
+            FROM
+                employees
+            LEFT JOIN
+                roles ON employees.role_id = roles.id
+            ORDER BY
+                employees.id;
             `
         );
     };
