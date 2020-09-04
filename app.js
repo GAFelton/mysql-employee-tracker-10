@@ -6,11 +6,11 @@ const prompts = require('./prompts');
 const db = require('./db');
 require('console.table');
 
-async function viewallTitles() {
-    const titles = await db.viewallTitles();
+async function viewallRoles() {
+    const roles = await db.viewallRoles();
 
     console.log('\n');
-    console.table(titles);
+    console.table(roles);
 
     mainPrompt();
 }
