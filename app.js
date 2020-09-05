@@ -52,6 +52,7 @@ async function addDepartment() {
 
     console.log('\n');
     console.log(`New Department called ${name} added.`);
+    mainPrompt();
 }
 
 
