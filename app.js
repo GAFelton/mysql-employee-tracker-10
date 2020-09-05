@@ -6,6 +6,17 @@ const prompts = require('./prompts');
 const db = require('./db');
 require('console.table');
 
+
+//Exit Method for MainPrompt
+function exit() {
+    db.end();
+    process.on('exit', function(code) {
+        return console.log(`About to exit with code ${code}`);
+    });
+    process.exit();
+}
+
+//READ FUNCTIONS
 async function viewAllDepts() {
     const depts = await db.viewAllDepts();
 
@@ -33,6 +44,7 @@ async function viewAllEmployees() {
     mainPrompt();
 }
 
+//POST FUNCTIONS
 async function addEmployee() {
     const { firstName, lastName, roleID, managerID } = await inquirer.prompt(prompts.addEmployee);
     console.log(firstName, lastName, roleID, managerID);
@@ -61,8 +73,8 @@ async function mainPrompt() {
         case "Add New Employee":
             addEmployee();
             break;
-        case "exit":
-            connection.end();
+        case "Exit":
+            exit();
             break;
     }
     

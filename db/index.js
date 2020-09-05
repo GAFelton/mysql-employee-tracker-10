@@ -9,6 +9,10 @@ class DB {
         this.connection = connection;
     }
 
+    end() {
+        connection.end();
+    };
+
     // GET METHODS
     viewAllDepts() {
         return this.connection.query(
@@ -64,10 +68,12 @@ class DB {
 
 
     // POST METHODS
-    addDepartment() {
+    addDepartment(dept) {
         return this.connection.query(
             `
-            `
+            INSERT INTO departments (name)
+            VALUES (?);
+            `, [dept]
         );
     };
 

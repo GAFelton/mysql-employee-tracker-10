@@ -3,7 +3,7 @@ module.exports = {
         type: "list",
         name: "mainPrompt",
         message: "Select the action you'd like to perform:",
-        choices: ["View All Employees", "View All Roles", "View All Departments", "Add New Employee", "exit"]
+        choices: ["View All Employees", "View All Roles", "View All Departments", "Add New Employee", "Exit"]
     }],
 
     addEmployee: [{
