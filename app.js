@@ -55,10 +55,24 @@ async function addDepartment() {
     mainPrompt();
 }
 
+async function addRole() {
+    const { title, salary, department_id } = await inquirer.prompt(prompts.addRole);
+    const newRole = await db.addRole(title, salary, department_id);
+
+    console.log('\n');
+    console.log(
+        `New Role added:
+        Title: ${title}
+        Salary: ${salary}
+        Department_ID: ${department_id}
+        `
+    );
+    mainPrompt();
+}
 
 async function addEmployee() {
-    const { firstName, lastName, roleID, managerID } = await inquirer.prompt(prompts.addEmployee);
-    console.log(firstName, lastName, roleID, managerID);
+    const { first_name, last_name, role_id, manager_id } = await inquirer.prompt(prompts.addEmployee);
+    console.log(first_name, last_name, role_id, manager_id);
     // const newEmployee = await db.addEmployee();
 
     // console.log('\n');
@@ -83,6 +97,9 @@ async function mainPrompt() {
             break;
         case "Add New Department":
             addDepartment();
+            break;
+        case "Add New Role":
+            addRole();
             break;
         case "Add New Employee":
             addEmployee();

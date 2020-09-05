@@ -77,10 +77,13 @@ class DB {
         );
     };
 
-    addRole() {
+    addRole(title, salary, department_id) {
         return this.connection.query(
             `
-            `
+            INSERT INTO roles (title, salary, department_id)
+VALUES (?);
+            ,` [title, salary, department_id]
+            
         );
     };
 

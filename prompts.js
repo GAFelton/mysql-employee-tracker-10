@@ -3,7 +3,7 @@ module.exports = {
         type: "list",
         name: "mainPrompt",
         message: "Select the action you'd like to perform:",
-        choices: ["View All Employees", "View All Roles", "View All Departments", "Add New Department", "Add New Employee", "Exit"]
+        choices: ["View All Employees", "View All Roles", "View All Departments", "Add New Department", "Add New Role", "Add New Employee", "Exit"]
     }],
 
     addDepartment: [{
@@ -12,25 +12,62 @@ module.exports = {
         message: "Title of new Department:"
     }],
 
+    addRole: [{
+        type: "input",
+        name: "title",
+        message: "Title of new role:"
+    },
+    {
+        type: "number",
+        name: "salary",
+        message: "Salary:",
+        validate: function (value) {
+            var valid = !isNaN(parseFloat(value));
+            return valid || 'Please enter a number';
+          },
+          filter: Number,
+    },
+    {
+        type: "number",
+        name: "department_id",
+        message: "Department ID:",
+        validate: function (value) {
+            var valid = !isNaN(parseFloat(value));
+            return valid || 'Please enter a number';
+          },
+          filter: Number,
+    }
+    ],
+
     addEmployee: [{
         type: "input",
-        name: "firstName",
+        name: "first_name",
         message: "Employee's First Name:"
     },
     {
         type: "input",
-        name: "lastName",
+        name: "last_name",
         message: "Employee's Last Name:"
     },
     {
         type: "number",
-        name: "roleID",
-        message: "Employee's Role ID:"
+        name: "role_id",
+        message: "Employee's Role ID:",
+        validate: function (value) {
+            var valid = !isNaN(parseFloat(value));
+            return valid || 'Please enter a number';
+          },
+          filter: Number,
     },
     {
         type: "number",
-        name: "managerID",
-        message: "Employee's Manager's ID:"
+        name: "manager_id",
+        message: "Employee's Manager's ID:",
+        validate: function (value) {
+            var valid = !isNaN(parseFloat(value));
+            return valid || 'Please enter a number';
+          },
+          filter: Number,
     }
     ],
     
