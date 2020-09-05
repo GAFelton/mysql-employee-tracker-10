@@ -3,7 +3,13 @@ module.exports = {
         type: "list",
         name: "mainPrompt",
         message: "Select the action you'd like to perform:",
-        choices: ["View All Employees", "View All Roles", "View All Departments", "Add New Employee", "Exit"]
+        choices: ["View All Employees", "View All Roles", "View All Departments", "Add New Department", "Add New Employee", "Exit"]
+    }],
+
+    addDepartment: [{
+        type: "input",
+        name: "name",
+        message: "Title of new Department:"
     }],
 
     addEmployee: [{
@@ -26,6 +32,7 @@ module.exports = {
         name: "managerID",
         message: "Employee's Manager's ID:"
     }
-    ]
+    ],
+    
 
 }

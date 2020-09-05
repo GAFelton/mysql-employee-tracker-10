@@ -45,6 +45,16 @@ async function viewAllEmployees() {
 }
 
 //POST FUNCTIONS
+
+async function addDepartment() {
+    const { name } = await inquirer.prompt(prompts.addDepartment);
+    const newDept = await db.addDepartment(name);
+
+    console.log('\n');
+    console.log(`New Department called ${name} added.`);
+}
+
+
 async function addEmployee() {
     const { firstName, lastName, roleID, managerID } = await inquirer.prompt(prompts.addEmployee);
     console.log(firstName, lastName, roleID, managerID);
@@ -69,6 +79,9 @@ async function mainPrompt() {
             break;
         case "View All Employees":
             viewAllEmployees();
+            break;
+        case "Add New Department":
+            addDepartment();
             break;
         case "Add New Employee":
             addEmployee();
