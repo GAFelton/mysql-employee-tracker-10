@@ -65,13 +65,33 @@ class DB {
         );
     };
 
+    viewEmployee(id) {
+        return this.connection.query(
+            `
+            SELECT
+                employees.id AS ID,
+                employees.first_name AS firstName,
+                employees.last_name AS lastName,
+                employees.role_id AS roleID,
+                roles.title AS Role,
+                employees.manager_id AS managerID
+            FROM
+                employees
+            LEFT JOIN
+                roles ON employees.role_id = roles.id
+            WHERE
+                employees.id = (?);
+            `, [id]
+        );
+    };
 
 
     // POST METHODS
     addDepartment(dept) {
         return this.connection.query(
             `
-            INSERT INTO departments (name)
+            INSERT INTO 
+                departments (name)
             VALUES (?);
             `, [dept]
         );
@@ -80,26 +100,44 @@ class DB {
     addRole(title, salary, department_id) {
         return this.connection.query(
             `
-            INSERT INTO roles (title, salary, department_id)
-VALUES (?);
-            ,` [title, salary, department_id]
+            INSERT INTO 
+                roles (title, salary, department_id)
+            VALUES (?);
+            `, [title, salary, department_id]
             
         );
     };
 
-    addEmployee() {
+    addEmployee(first_name, last_name, role_id, manager_id) {
         return this.connection.query(
             `
-            `
+            INSERT INTO 
+                employees (first_name, last_name, role_id, manager_id)
+            VALUES (?);
+            `, [first_name, last_name, role_id, manager_id]
         );
     };
 
 
     // PUT METHOD
-    updateEmployee() {
+    updateEmployee(id, first_name, last_name, role_id, manager_id) {
         return this.connection.query(
             `
-            `
+            UPDATE 
+                employees
+            SET (?)
+            WHERE (?);
+            `, [
+                {
+                    first_name: first_name, 
+                    last_name: last_name, 
+                    role_id: role_id, 
+                    manager_id: manager_id  
+                },
+                {
+                    id: id
+                }
+            ]
         );
     };
 }

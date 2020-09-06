@@ -72,13 +72,48 @@ async function addRole() {
 
 async function addEmployee() {
     const { first_name, last_name, role_id, manager_id } = await inquirer.prompt(prompts.addEmployee);
-    console.log(first_name, last_name, role_id, manager_id);
-    // const newEmployee = await db.addEmployee();
+    const newEmployee = await db.addEmployee(first_name, last_name, role_id, manager_id);
 
-    // console.log('\n');
-    // console.table(newEmployee);
+    console.log('\n');
+    console.log(
+        `New Role added:
+        First Name: ${first_name}
+        Last Name: ${last_name}
+        Role_ID: ${role_id}
+        Manager_ID: ${manager_id}
+        `
+    );
 
     mainPrompt();
+}
+
+async function updateEmployee() {
+    const {id} = await inquirer.prompt(prompts.selectEmployee_askID);
+    const selectedEmployee = await db.viewEmployee(id);
+    console.log('\n');
+    console.table(selectedEmployee);
+    
+    const {firstName, lastName, roleID, managerID} = selectedEmployee[0];
+    const updateEmployee_details = prompts.updateEmployee_function(firstName, lastName, roleID, managerID);
+    
+    const { first_name, last_name, role_id, manager_id } = await inquirer.prompt(updateEmployee_details);
+
+    const updatedEmployee = await db.updateEmployee(id, first_name, last_name, role_id, manager_id);
+    const newSelectedEmployee = await db.viewEmployee(id);
+
+    console.log('\n');
+    console.log(`Employee Updated! New record:`);
+    console.table(newSelectedEmployee);
+
+    mainPrompt();
+}
+
+async function deleteEmployee() {
+    const {id} = await inquirer.prompt(prompts.selectEmployee_askID);
+    const selectedEmployee = await db.viewEmployee(id);
+    console.log('\n');
+    console.table(selectedEmployee);
+    
 }
 
 
@@ -103,6 +138,9 @@ async function mainPrompt() {
             break;
         case "Add New Employee":
             addEmployee();
+            break;
+            case "Update Employee":
+            updateEmployee();
             break;
         case "Exit":
             exit();
