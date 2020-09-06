@@ -11,7 +11,7 @@ module.exports = {
         type: "list",
         name: "mainPrompt",
         message: "Select the action you'd like to perform:",
-        choices: ["View All Employees", "View All Roles", "View All Departments", "Add New Department", "Add New Role", "Add New Employee", "Update Employee", "Exit"]
+        choices: ["View All Employees", "View All Roles", "View All Departments", "Add New Department", "Add New Role", "Add New Employee", "Update Employee", "Remove Employee", "Exit"]
     }],
 
     addDepartment: [{
@@ -129,6 +129,11 @@ module.exports = {
         ]
     },
 
-    
+    deleteEmployee: [{
+        type: "confirm",
+        name: "confirmDelete",
+        message: "Are you sure you would like to permanently delete this record? \n (There is no way to undo this.)",
+        default: "N"
+    }]
 
 }

@@ -113,6 +113,16 @@ async function deleteEmployee() {
     const selectedEmployee = await db.viewEmployee(id);
     console.log('\n');
     console.table(selectedEmployee);
+
+    const confirmDelete = await inquirer.prompts(prompts.deleteEmployee);
+    if (confirmDelete) {
+        const deleted = await db.deleteEmployee(id);
+        console.log(`Employee record has been permanently deleted.`)
+    }
+    else if (!confirmDelete) {
+        console.log(`Employee record not deleted.`)
+    }
+    mainPrompt();
     
 }
 
@@ -139,8 +149,11 @@ async function mainPrompt() {
         case "Add New Employee":
             addEmployee();
             break;
-            case "Update Employee":
+        case "Update Employee":
             updateEmployee();
+            break;
+        case "Remove Employee":
+            deleteEmployee();
             break;
         case "Exit":
             exit();

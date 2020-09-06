@@ -140,6 +140,21 @@ class DB {
             ]
         );
     };
+
+    // DELETE METHOD
+    deleteEmployee(id) {
+        return this.connection.query(
+            `
+            DELETE FROM 
+                employees 
+            WHERE
+                id = (?);
+            `, [id]
+        );
+    };
+
+
+
 }
 
 module.exports = new DB(connection)
