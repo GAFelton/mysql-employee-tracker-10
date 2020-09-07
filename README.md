@@ -6,7 +6,7 @@
 
   Command-line application using node.js, inquirer, and MySQL to make and maintain a Content Management System (CMS) for keeping track of an organization's employees.
 
-  ![image-20200906231400072](.\Assets\logo-screenshot.png)
+  ![image-20200906231400072](./Assets/logo-screenshot.png)
 
 [Link to Repo](https://github.com/GAFelton/mysql-employee-tracker-10)
 
@@ -40,7 +40,7 @@
 
  Cycle through the main prompt menu to find options for viewing Employees, Departments, and Roles, adding new Employees, Departments, and Roles, Updating Employee info, Removing Employees from the database, viewing Employees by Manager, and more.
 
-<img src=".\Assets\mysql-employee-tracker-demo.gif" alt="mysql-employee-tracker-demo-gif" style="zoom: 200%;" />
+<img src="./Assets/mysql-employee-tracker-demo.gif" alt="mysql-employee-tracker-demo-gif" style="zoom: 200%;" />
 
 
 
