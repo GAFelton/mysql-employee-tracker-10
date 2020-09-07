@@ -73,7 +73,6 @@ async function addRole() {
 async function addEmployee() {
     const { first_name, last_name, role_id, manager_id } = await inquirer.prompt(prompts.addEmployee);
     const newEmployee = await db.addEmployee(first_name, last_name, role_id, manager_id);
-
     console.log('\n');
     console.log(
         `New Role added:
@@ -92,8 +91,10 @@ async function updateEmployee() {
     const selectedEmployee = await db.viewEmployee(id);
     console.log('\n');
     console.table(selectedEmployee);
+    console.log(selectedEmployee[0]);
     
-    const {firstName, lastName, roleID, managerID} = selectedEmployee[0];
+    const { first_name: firstName, last_name: lastName, role_id: roleID, manager_id: managerID } = selectedEmployee[0];
+console.log(firstName, lastName, roleID, managerID);
     const updateEmployee_details = prompts.updateEmployee_function(firstName, lastName, roleID, managerID);
     
     const { first_name, last_name, role_id, manager_id } = await inquirer.prompt(updateEmployee_details);

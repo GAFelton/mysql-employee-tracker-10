@@ -71,21 +71,16 @@ class DB {
     viewEmployee(id) {
         return this.connection.query(
             `
-        SELECT
-            e1.id AS ID,
-            e1.first_name AS First_Name,
-            e1.last_name AS Last_Name,
-            roles.title AS Role,
-            CONCAT(e2.first_name, ' ', e2.last_name) AS Manager_Name,
-            e1.manager_id AS Manager_ID
+            SELECT
+            employees.id,
+            employees.first_name,
+            employees.last_name,
+            employees.role_id,
+            employees.manager_id
         FROM
-            employees e1
-        LEFT JOIN
-            roles ON e1.role_id = roles.id
-        LEFT JOIN
-            employees e2 ON e1.manager_id = e2.id
+            employees
             WHERE
-                e1.id = ?;
+            employees.id = ?;
             `, [id]
         );
     };
@@ -107,19 +102,19 @@ class DB {
             `
             INSERT INTO 
                 roles (title, salary, department_id)
-            VALUES (?);
-            `, [title, salary, department_id]
+            VALUES (?, ?, ?);
+            `, [
+                title,
+                salary,
+                department_id
+            ]
             
         );
     };
 
     addEmployee(first_name, last_name, role_id, manager_id) {
         return this.connection.query(
-            `
-            INSERT INTO 
-                employees (first_name, last_name, role_id, manager_id)
-            VALUES (?);
-            `, [first_name, last_name, role_id, manager_id]
+            `INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES (?, ?, ?, ?);`, [first_name, last_name, role_id, manager_id]
         );
     };
 

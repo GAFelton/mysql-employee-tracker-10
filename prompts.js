@@ -1,11 +1,3 @@
-// const {firstName, lastName, roleID, managerID} = require('./sandbox');
-
-// var firstName1 = firstName;
-// var lastName1 = lastName;
-// var roleID1 = roleID;
-// var managerID1 = managerID;
-
-
 module.exports = {
     mainPrompt: [{
         type: "list",
@@ -33,7 +25,7 @@ module.exports = {
             var valid = !isNaN(parseFloat(value));
             return valid || 'Please enter a number';
           },
-          filter: Number,
+          filter: Number
     },
     {
         type: "number",
@@ -43,7 +35,7 @@ module.exports = {
             var valid = !isNaN(parseFloat(value));
             return valid || 'Please enter a number';
           },
-          filter: Number,
+          filter: Number
     }
     ],
 
@@ -65,7 +57,7 @@ module.exports = {
             var valid = !isNaN(parseFloat(value));
             return valid || 'Please enter a number';
           },
-          filter: Number,
+          filter: Number
     },
     {
         type: "number",
@@ -75,7 +67,7 @@ module.exports = {
             var valid = !isNaN(parseFloat(value));
             return valid || 'Please enter a number';
           },
-          filter: Number,
+          filter: Number
     }
     ],
 
@@ -87,7 +79,7 @@ module.exports = {
             var valid = !isNaN(parseFloat(value));
             return valid || 'Please enter a number';
           },
-          filter: Number,
+          filter: Number
     }],
 
     updateEmployee_function: function(firstName, lastName, roleID, managerID) {
@@ -113,7 +105,7 @@ module.exports = {
                     var valid = !isNaN(parseFloat(value));
                     return valid || 'Please enter a number';
                   },
-                  filter: Number,
+                  filter: Number
             },
             {
                 type: "number",
@@ -124,7 +116,7 @@ module.exports = {
                     var valid = !isNaN(parseFloat(value));
                     return valid || 'Please enter a number';
                   },
-                  filter: Number,
+                  filter: Number
             }
         ]
     },
@@ -144,7 +136,7 @@ module.exports = {
             var valid = !isNaN(parseFloat(value));
             return valid || 'Please enter a number';
           },
-          filter: Number,
+          filter: Number
     }]
 
 }
