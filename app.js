@@ -126,6 +126,15 @@ async function deleteEmployee() {
     
 }
 
+async function viewEmployeeByManager() {
+    const {manager_id} = await inquirer.prompt(prompts.viewEmployeesByManager);
+    const employeesByManager = await db.viewEmployeesByManager(manager_id);
+    console.log('\n');
+    console.table(employeesByManager);
+
+    mainPrompt();
+}
+
 
 async function mainPrompt() {
     const { mainPrompt } = await inquirer.prompt(prompts.mainPrompt);
@@ -154,6 +163,9 @@ async function mainPrompt() {
             break;
         case "Remove Employee":
             deleteEmployee();
+            break;
+        case "View Employees by Manager":
+            viewEmployeeByManager();
             break;
         case "Exit":
             exit();

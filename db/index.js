@@ -50,17 +50,20 @@ class DB {
         return this.connection.query(
             `
             SELECT
-                employees.id AS ID,
-                employees.first_name AS First_Name,
-                employees.last_name AS Last_Name,
-                roles.title AS Role,
-                employees.manager_id AS Manager_ID
-            FROM
-                employees
-            LEFT JOIN
-                roles ON employees.role_id = roles.id
+            e1.id AS ID,
+            e1.first_name AS First_Name,
+            e1.last_name AS Last_Name,
+            roles.title AS Role,
+            CONCAT(e2.first_name, ' ', e2.last_name) AS Manager_Name,
+            e1.manager_id AS Manager_ID
+        FROM
+            employees e1
+        LEFT JOIN
+            roles ON e1.role_id = roles.id
+        LEFT JOIN
+            employees e2 ON e1.manager_id = e2.id
             ORDER BY
-                employees.id;
+                e1.id;
             `
         );
     };
@@ -68,19 +71,21 @@ class DB {
     viewEmployee(id) {
         return this.connection.query(
             `
-            SELECT
-                employees.id AS ID,
-                employees.first_name AS firstName,
-                employees.last_name AS lastName,
-                employees.role_id AS roleID,
-                roles.title AS Role,
-                employees.manager_id AS managerID
-            FROM
-                employees
-            LEFT JOIN
-                roles ON employees.role_id = roles.id
+        SELECT
+            e1.id AS ID,
+            e1.first_name AS First_Name,
+            e1.last_name AS Last_Name,
+            roles.title AS Role,
+            CONCAT(e2.first_name, ' ', e2.last_name) AS Manager_Name,
+            e1.manager_id AS Manager_ID
+        FROM
+            employees e1
+        LEFT JOIN
+            roles ON e1.role_id = roles.id
+        LEFT JOIN
+            employees e2 ON e1.manager_id = e2.id
             WHERE
-                employees.id = ?;
+                e1.id = ?;
             `, [id]
         );
     };
@@ -153,6 +158,28 @@ class DB {
         );
     };
 
+    // VIEW EMPLOYEES BY MANAGER
+    viewEmployeesByManager(manager_id) {
+        return this.connection.query(
+            `
+        SELECT
+            e1.id AS ID,
+            e1.first_name AS First_Name,
+            e1.last_name AS Last_Name,
+            roles.title AS Role,
+            CONCAT(e2.first_name, ' ', e2.last_name) AS Manager_Name,
+            e1.manager_id AS Manager_ID
+        FROM
+            employees e1
+        LEFT JOIN
+            roles ON e1.role_id = roles.id
+        LEFT JOIN
+            employees e2 ON e1.manager_id = e2.id
+            WHERE
+            e1.manager_id = ?;
+            `, [manager_id]
+        );
+    };
 
 
 }

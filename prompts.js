@@ -11,7 +11,7 @@ module.exports = {
         type: "list",
         name: "mainPrompt",
         message: "Select the action you'd like to perform:",
-        choices: ["View All Employees", "View All Roles", "View All Departments", "Add New Department", "Add New Role", "Add New Employee", "Update Employee", "Remove Employee", "Exit"]
+        choices: ["View All Employees", "View All Roles", "View All Departments", "Add New Department", "Add New Role", "Add New Employee", "Update Employee", "Remove Employee", "View Employees by Manager", "Exit"]
     }],
 
     addDepartment: [{
@@ -134,6 +134,17 @@ module.exports = {
         name: "confirmDelete",
         message: "Are you sure you would like to permanently delete this record? \n (There is no way to undo this.)",
         default: "n"
+    }],
+
+    viewEmployeesByManager: [{
+        type: "number",
+        name: "manager_id",
+        message: "Search all employees by Manager's ID:",
+        validate: function (value) {
+            var valid = !isNaN(parseFloat(value));
+            return valid || 'Please enter a number';
+          },
+          filter: Number,
     }]
 
 }
