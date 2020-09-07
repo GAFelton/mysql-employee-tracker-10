@@ -97,12 +97,12 @@ async function updateEmployee() {
     const updateEmployee_details = prompts.updateEmployee_function(firstName, lastName, roleID, managerID);
     
     const { first_name, last_name, role_id, manager_id } = await inquirer.prompt(updateEmployee_details);
-
+console.log(first_name, last_name, role_id, manager_id);
     const updatedEmployee = await db.updateEmployee(id, first_name, last_name, role_id, manager_id);
     const newSelectedEmployee = await db.viewEmployee(id);
 
     console.log('\n');
-    console.log(`Employee Updated! New record:`);
+    console.log(`Employee ${id} Updated! New record:`);
     console.table(newSelectedEmployee);
 
     mainPrompt();
@@ -114,7 +114,7 @@ async function deleteEmployee() {
     console.log('\n');
     console.table(selectedEmployee);
 
-    const confirmDelete = await inquirer.prompts(prompts.deleteEmployee);
+    const confirmDelete = await inquirer.prompt(prompts.deleteEmployee);
     if (confirmDelete) {
         const deleted = await db.deleteEmployee(id);
         console.log(`Employee record has been permanently deleted.`)

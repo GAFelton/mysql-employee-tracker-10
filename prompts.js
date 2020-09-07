@@ -133,7 +133,7 @@ module.exports = {
         type: "confirm",
         name: "confirmDelete",
         message: "Are you sure you would like to permanently delete this record? \n (There is no way to undo this.)",
-        default: "N"
+        default: "n"
     }]
 
 }

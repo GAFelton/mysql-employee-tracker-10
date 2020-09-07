@@ -80,7 +80,7 @@ class DB {
             LEFT JOIN
                 roles ON employees.role_id = roles.id
             WHERE
-                employees.id = (?);
+                employees.id = ?;
             `, [id]
         );
     };
@@ -125,8 +125,8 @@ class DB {
             `
             UPDATE 
                 employees
-            SET (?)
-            WHERE (?);
+            SET ?
+            WHERE ?;
             `, [
                 {
                     first_name: first_name, 
@@ -148,7 +148,7 @@ class DB {
             DELETE FROM 
                 employees 
             WHERE
-                id = (?);
+                id = ?;
             `, [id]
         );
     };
