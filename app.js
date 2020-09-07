@@ -174,5 +174,26 @@ async function mainPrompt() {
     }
     
 }
+function printlogo(){
+    console.log(
+        logo({
+            name: 'MySQL Employee Tracker',
+            font: 'Roman',
+            lineChars: 20,
+            borderColor: 'grey',
+            logoColor: 'bold-green',
+            textColor: 'green',
+        })
+        .emptyLine()
+        .center('CLI Interface for managing employees, using Node.js and mysql and inquirer packages.')
+        .render()
+    );
+}
 
-mainPrompt();
+function init() {
+    printlogo(); 
+    console.log("Welcome to the Employee Content Management System (CMS)! \n Please make sure you are hooked up to a database following the included schema. \n");
+    mainPrompt();
+}
+
+init();
