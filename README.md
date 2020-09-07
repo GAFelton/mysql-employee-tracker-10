@@ -1,4 +1,79 @@
+# MySQL Employee Content Management System (CMS)
+
+  ![GitHub](https://img.shields.io/github/license/GAFelton/mysql-employee-tracker-10)
+
+  ## Description:
+
+  Command-line application using node.js, inquirer, and MySQL to make and maintain a Content Management System (CMS) for keeping track of an organization's employees.
+
+  
+
+  ## Table of Contents
+
+ * [Installation](#Installation)
+
+ * [Usage](#Usage)
+
+ * [Contributing](#Contributing)
+
+ * [Tests](#Tests)
+
+ * [Questions](#Questions)
+
+ * [License](#License)
+
+  
+
+  ## Installation
+
+    1. Fork the repo. 
+    2. Clone it to your local machine. 
+    3. Install npm packages with `npm install`. 
+    4. Set up MySQL server using schema.sql (and optional seeds.sql file). 
+    5. Run the CLI application using `node app.js`.
+
+  
+
+  ## Usage
+
+ Cycle through the main prompt menu to find options for viewing Employees, Departments, and Roles, adding new Employees, Departments, and Roles, Updating Employee info, Removing Employees from the database, viewing Employees by Manager, and more.
+
+
+
+  ## License
+
+  MIT
+
+  
+
+  ## Contribution Guidelines
+
+  Issues and Pull Requests are welcome!
+
+  
+
+  ## Tests
+
+  
+
+  
+
+  ## Questions
+
+  Please address questions to GAFelton.
+
+  [Link to Profile](https://github.com/GAFelton)
+
+  [E-mail](gafelton@gmail.com)
+
+  
+
+
+
+--------------------
+
 # mysql-employee-tracker-10
+
 Command-line application using node.js, inquirer, and MySQL to make a CMS for keeping track of an organization's employees.
 
 
