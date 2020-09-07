@@ -91,14 +91,11 @@ async function updateEmployee() {
     const selectedEmployee = await db.viewEmployee(id);
     console.log('\n');
     console.table(selectedEmployee);
-    console.log(selectedEmployee[0]);
     
     const { first_name: firstName, last_name: lastName, role_id: roleID, manager_id: managerID } = selectedEmployee[0];
-console.log(firstName, lastName, roleID, managerID);
     const updateEmployee_details = prompts.updateEmployee_function(firstName, lastName, roleID, managerID);
     
     const { first_name, last_name, role_id, manager_id } = await inquirer.prompt(updateEmployee_details);
-console.log(first_name, last_name, role_id, manager_id);
     const updatedEmployee = await db.updateEmployee(id, first_name, last_name, role_id, manager_id);
     const newSelectedEmployee = await db.viewEmployee(id);
 
